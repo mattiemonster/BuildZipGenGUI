@@ -131,9 +131,9 @@
             this.genMacCheck.AutoSize = true;
             this.genMacCheck.Location = new System.Drawing.Point(38, 187);
             this.genMacCheck.Name = "genMacCheck";
-            this.genMacCheck.Size = new System.Drawing.Size(47, 17);
+            this.genMacCheck.Size = new System.Drawing.Size(48, 17);
             this.genMacCheck.TabIndex = 9;
-            this.genMacCheck.Text = "Mac";
+            this.genMacCheck.Text = "OSX";
             this.genMacCheck.UseVisualStyleBackColor = true;
             // 
             // generateButton

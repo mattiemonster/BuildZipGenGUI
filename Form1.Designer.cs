@@ -41,6 +41,7 @@
             this.generateButton = new System.Windows.Forms.Button();
             this.genWebGLCheck = new System.Windows.Forms.CheckBox();
             this.genCustomCheck = new System.Windows.Forms.CheckBox();
+            this.genAndroidCheck = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -137,12 +138,13 @@
             // 
             // generateButton
             // 
-            this.generateButton.Location = new System.Drawing.Point(231, 265);
+            this.generateButton.Location = new System.Drawing.Point(231, 282);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(75, 23);
             this.generateButton.TabIndex = 10;
             this.generateButton.Text = "Generate";
             this.generateButton.UseVisualStyleBackColor = true;
+            this.generateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
             // genWebGLCheck
             // 
@@ -158,18 +160,29 @@
             // 
             this.genCustomCheck.AutoSize = true;
             this.genCustomCheck.Enabled = false;
-            this.genCustomCheck.Location = new System.Drawing.Point(37, 233);
+            this.genCustomCheck.Location = new System.Drawing.Point(38, 256);
             this.genCustomCheck.Name = "genCustomCheck";
             this.genCustomCheck.Size = new System.Drawing.Size(92, 17);
             this.genCustomCheck.TabIndex = 12;
             this.genCustomCheck.Text = "Other/Custom";
             this.genCustomCheck.UseVisualStyleBackColor = true;
             // 
+            // genAndroidCheck
+            // 
+            this.genAndroidCheck.AutoSize = true;
+            this.genAndroidCheck.Location = new System.Drawing.Point(38, 233);
+            this.genAndroidCheck.Name = "genAndroidCheck";
+            this.genAndroidCheck.Size = new System.Drawing.Size(62, 17);
+            this.genAndroidCheck.TabIndex = 13;
+            this.genAndroidCheck.Text = "Android";
+            this.genAndroidCheck.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 295);
+            this.ClientSize = new System.Drawing.Size(314, 313);
+            this.Controls.Add(this.genAndroidCheck);
             this.Controls.Add(this.genCustomCheck);
             this.Controls.Add(this.genWebGLCheck);
             this.Controls.Add(this.generateButton);
@@ -208,6 +221,7 @@
         private System.Windows.Forms.Button generateButton;
         private System.Windows.Forms.CheckBox genWebGLCheck;
         private System.Windows.Forms.CheckBox genCustomCheck;
+        private System.Windows.Forms.CheckBox genAndroidCheck;
     }
 }
 

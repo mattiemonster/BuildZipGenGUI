@@ -28,5 +28,35 @@ namespace BuildZipGenGUI
                 }
             }
         }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(projectNameText.Text))
+            {
+                MessageBox.Show("Project name must not be empty!", "Error generating",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(folderLocText.Text))
+            {
+                MessageBox.Show("Folder location must be set!", "Error generating",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Directory.Exists(folderLocText.Text))
+            {
+                DialogResult dr = MessageBox.Show("Output location does not exist. Generate?", "Error generating",
+                       MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    Directory.CreateDirectory(folderLocText.Text);
+                } else
+                {
+                    return;
+                }
+            }
+        }
     }
 }

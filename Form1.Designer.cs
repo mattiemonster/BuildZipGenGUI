@@ -42,6 +42,9 @@
             this.genWebGLCheck = new System.Windows.Forms.CheckBox();
             this.genCustomCheck = new System.Windows.Forms.CheckBox();
             this.genAndroidCheck = new System.Windows.Forms.CheckBox();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.statusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -177,11 +180,28 @@
             this.genAndroidCheck.Text = "Android";
             this.genAndroidCheck.UseVisualStyleBackColor = true;
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStripLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 308);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(314, 22);
+            this.statusStrip.TabIndex = 14;
+            this.statusStrip.Text = "statusStrip";
+            // 
+            // statusStripLabel
+            // 
+            this.statusStripLabel.Name = "statusStripLabel";
+            this.statusStripLabel.Size = new System.Drawing.Size(66, 17);
+            this.statusStripLabel.Text = "statusLabel";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 313);
+            this.ClientSize = new System.Drawing.Size(314, 330);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.genAndroidCheck);
             this.Controls.Add(this.genCustomCheck);
             this.Controls.Add(this.genWebGLCheck);
@@ -201,6 +221,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Build Zip Generator";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,6 +244,8 @@
         private System.Windows.Forms.CheckBox genWebGLCheck;
         private System.Windows.Forms.CheckBox genCustomCheck;
         private System.Windows.Forms.CheckBox genAndroidCheck;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel statusStripLabel;
     }
 }
 

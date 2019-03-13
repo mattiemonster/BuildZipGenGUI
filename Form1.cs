@@ -17,6 +17,7 @@ namespace BuildZipGenGUI
         private void Form1_Load(object sender, EventArgs e)
         {
             projectNameText.Select();
+            SetStatus("", System.Drawing.Color.Black);
         }
 
         private void FolderLocBrowse_Click(object sender, EventArgs e)
@@ -38,6 +39,7 @@ namespace BuildZipGenGUI
             {
                 MessageBox.Show("Project name must not be empty!", "Error generating",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SetStatus("Project name not specified", System.Drawing.Color.Red);
                 return;
             }
 
@@ -47,11 +49,13 @@ namespace BuildZipGenGUI
             {
                 MessageBox.Show("Folder location must be set!", "Error generating",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SetStatus("Output location not specified", System.Drawing.Color.Red);
                 return;
             }
 
             if (!Directory.Exists(folderLocText.Text))
             {
+                SetStatus("Output location doesn't exist", System.Drawing.Color.Gold);
                 DialogResult dr = MessageBox.Show("Output location does not exist. Generate?", "Error generating",
                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
@@ -75,6 +79,8 @@ namespace BuildZipGenGUI
                 Generate("WebGL");
             if (genAndroidCheck.Checked)
                 Generate("Android");
+
+            SetStatus("Finished generation", System.Drawing.Color.Green);
         }
 
         void Generate(string platform)
@@ -87,6 +93,12 @@ namespace BuildZipGenGUI
             file.WriteLine("Compress-Archive -Path ./* -DestinationPath ./" + projectName + "-" + platform + ".zip");
             file.Flush();
             file.Close();
+        }
+
+        void SetStatus(string msg, System.Drawing.Color color)
+        {
+            statusStripLabel.ForeColor = color;
+            statusStripLabel.Text = msg;
         }
     }
 }

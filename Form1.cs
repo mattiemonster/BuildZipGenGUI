@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using Essy.Tools.InputBox;
 
 namespace BuildZipGenGUI
 {
@@ -9,9 +11,12 @@ namespace BuildZipGenGUI
         string outputPath;
         string projectName;
 
+        public List<string> customPlatforms;
+
         public Form1()
         {
             InitializeComponent();
+            customPlatforms = new List<string>();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -79,6 +84,11 @@ namespace BuildZipGenGUI
                 Generate("WebGL");
             if (genAndroidCheck.Checked)
                 Generate("Android");
+            if (genCustomCheck.Checked)
+            {
+                foreach (string item in customPlatforms)
+                    Generate(item);
+            }
 
             SetStatus("Finished generation", System.Drawing.Color.Green);
         }
@@ -99,6 +109,33 @@ namespace BuildZipGenGUI
         {
             statusStripLabel.ForeColor = color;
             statusStripLabel.Text = msg;
+        }
+
+        private void AddCustomPlatform_Click(object sender, EventArgs e)
+        {
+            string customPlatform = InputBox.ShowInputBox("Input custom platform");
+            if (customPlatform == null)
+                return;
+            customPlatformBox.Items.Add(customPlatform);
+            customPlatforms.Add(customPlatform);
+        }
+
+        private void RemoveCustomPlatform_Click(object sender, EventArgs e)
+        {
+            if (customPlatformBox.SelectedIndex == -1)
+            {
+                SetStatus("No item selected when trying to remove platform", System.Drawing.Color.Red);
+                MessageBox.Show("No item selected", "Error removing item",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            } else
+            {
+                string itemValue = (string)customPlatformBox.Items[customPlatformBox.SelectedIndex];
+                int selectedIndex = customPlatformBox.SelectedIndex;
+                customPlatformBox.Items.RemoveAt(selectedIndex);
+                customPlatforms.RemoveAt(selectedIndex);
+                SetStatus("Removed item: " + itemValue, System.Drawing.Color.Gold);
+            }
         }
     }
 }

@@ -44,7 +44,7 @@
             this.genAndroidCheck = new System.Windows.Forms.CheckBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.customPlatformBox = new System.Windows.Forms.ListBox();
             this.addCustomPlatform = new System.Windows.Forms.Button();
             this.removeCustomPlatform = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -166,7 +166,6 @@
             // genCustomCheck
             // 
             this.genCustomCheck.AutoSize = true;
-            this.genCustomCheck.Enabled = false;
             this.genCustomCheck.Location = new System.Drawing.Point(38, 256);
             this.genCustomCheck.Name = "genCustomCheck";
             this.genCustomCheck.Size = new System.Drawing.Size(92, 17);
@@ -200,13 +199,13 @@
             this.statusStripLabel.Size = new System.Drawing.Size(66, 17);
             this.statusStripLabel.Text = "statusLabel";
             // 
-            // listBox1
+            // customPlatformBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(165, 155);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(127, 121);
-            this.listBox1.TabIndex = 15;
+            this.customPlatformBox.FormattingEnabled = true;
+            this.customPlatformBox.Location = new System.Drawing.Point(165, 155);
+            this.customPlatformBox.Name = "customPlatformBox";
+            this.customPlatformBox.Size = new System.Drawing.Size(127, 121);
+            this.customPlatformBox.TabIndex = 15;
             // 
             // addCustomPlatform
             // 
@@ -216,6 +215,7 @@
             this.addCustomPlatform.TabIndex = 16;
             this.addCustomPlatform.Text = "+";
             this.addCustomPlatform.UseVisualStyleBackColor = true;
+            this.addCustomPlatform.Click += new System.EventHandler(this.AddCustomPlatform_Click);
             // 
             // removeCustomPlatform
             // 
@@ -225,6 +225,7 @@
             this.removeCustomPlatform.TabIndex = 17;
             this.removeCustomPlatform.Text = "-";
             this.removeCustomPlatform.UseVisualStyleBackColor = true;
+            this.removeCustomPlatform.Click += new System.EventHandler(this.RemoveCustomPlatform_Click);
             // 
             // label5
             // 
@@ -239,11 +240,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(314, 356);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.removeCustomPlatform);
             this.Controls.Add(this.addCustomPlatform);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.customPlatformBox);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.genAndroidCheck);
             this.Controls.Add(this.genCustomCheck);
@@ -259,7 +261,8 @@
             this.Controls.Add(this.folderLocText);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Build Zip Generator";
@@ -289,7 +292,7 @@
         private System.Windows.Forms.CheckBox genAndroidCheck;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusStripLabel;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox customPlatformBox;
         private System.Windows.Forms.Button addCustomPlatform;
         private System.Windows.Forms.Button removeCustomPlatform;
         private System.Windows.Forms.Label label5;
